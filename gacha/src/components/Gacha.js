@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/Gacha.css';
 import gacha from '../resources/gacha_img.png';
 import gacha_btn from '../resources/gacha_btn.png';
+// import {Container, Wrapper, Row, Column, Link, Title} from './footer';
+
 function Gacha() {
 
     function RotateHandler() {
@@ -21,3 +23,5 @@ function Gacha() {
   }
   
   export default Gacha;
+
+ 
