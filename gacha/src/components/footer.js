@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer-red">
         <footer>
         <div className="FooterContainer">
-                <div className="row">
+                <div className="row" >
                 <div className="column">
                         <h3>Services</h3>
                         <ul>
