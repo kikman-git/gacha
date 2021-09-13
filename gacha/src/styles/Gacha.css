@@ -1,0 +1,14 @@
+.GachaContainer {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.Gacha {
+  margin-top: 100px;
+  /* position: absolute; */
+}
+.GachaBtn {
+  margin-top: 100px;
+  margin-left: -375px;
+  position: absolute;
+}

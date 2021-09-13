@@ -1,9 +1,10 @@
 import './App.css';
+import Gacha from './components/Gacha';
 
 function App() {
   return (
     <div className="App">
-       hello world.
+       <Gacha />
     </div>
   );
 }
