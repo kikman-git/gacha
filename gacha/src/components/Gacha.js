@@ -6,8 +6,6 @@ import gacha from '../resources/gacha_img.png';
 import gacha_ball from '../resources/gacha_ball.png';
 import gacha_btn from '../resources/gacha_btn.png';
 
-
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -97,3 +95,5 @@ class Gacha extends Component  {
   }
   
   export default Gacha;
+
+ 
