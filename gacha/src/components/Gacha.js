@@ -29,14 +29,14 @@ function CouponGenerator(){
 }
 function addPost() {
    
-    // fetch('http://127.0.0.1:8000/accounts/coupons/', {
-    //     method: 'PSOT',
-    //     headers: {
-    //         'Accept': 'applicantion/json',
-    //         'Content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(CouponGenerator())
-    // });
+    fetch('http://127.0.0.1:8000/accounts/coupons/', {
+        method: 'PSOT',
+        headers: {
+            'Accept': 'applicantion/json',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(CouponGenerator())
+    });
 
     
     
@@ -56,7 +56,7 @@ class Gacha extends Component  {
         this.CouponHandler = this.CouponHandler.bind(this); 
     }
     AnimaHandler() {
-         console.log(JSON.stringify(CouponGenerator()));
+        console.log(JSON.stringify(CouponGenerator()));
         //addPost();
         const currentState = this.state.active;
         this.setState({ active: !currentState });
