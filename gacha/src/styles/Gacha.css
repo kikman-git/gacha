@@ -2,13 +2,40 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .Gacha {
   margin-top: 100px;
-  /* position: absolute; */
 }
 .GachaBtn {
-  margin-top: 100px;
-  margin-left: -375px;
+  margin-top: 525px;
+  margin-left: -180px;
   position: absolute;
+  transition: transform 1s linear;
+  transform-origin: center center;
+}
+.GachaBtn-rotate {
+  /* animation: spin 2s linear infinite;  */
+  transform: rotate(360deg);
+}
+.playBtn {
+  margin-top: 40px;
+  width: 100px;
+  height: 50px;
+  position: relative;
+}
+.GachaBall {
+  position: absolute;
+  margin-top: 580px;
+  margin-left: -15px;
+  opacity: 0;
+  transition: all 0.2s ease-in 1s;
+  transform-origin: center center;
+}
+.GachaBall-anima {
+  /* animation: spin 2s linear infinite; */
+  opacity: 1;
+  transform: translateY(25px);
 }

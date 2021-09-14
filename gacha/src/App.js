@@ -1,7 +1,9 @@
 import { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Gacha from './components/Gacha';
+import Award from './components/Award';
 import Footer from './components/footer';
 import Header from './components/header'
 import Homepage from './components/Homepage';
