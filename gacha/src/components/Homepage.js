@@ -1,28 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/Homepage.css';
 import logoLink from '../resources/rakuten_logo.svg';
-import Footer from './components/footer';
 
-function Homepage() {
+export default class Homepage extends Component {
 
-  function Login() {
-    console.log('Login function');
+  constructor(props) {
+    super(props);
+    this.Login = this.Login.bind(this);
+    this.Register = this.Register.bind(this);
   }
-  function Register() {
-    console.log('Register function');
-  }
-  return (
-    <div className="homepage">
 
-      <img src={logoLink}
-        alt="logo"
-        className="Logo" />
-      <p className="gameRule">some game rules</p>
-      <button onClick={Login}>login</button>
-      <button onClick={Register}>Register</button>
-      <Footer />
-    </div>
-  );
+  Login() {
+    this.props.history.push('/login');
+  }
+
+  Register() {
+    this.props.history.push('/register');
+  }
+
+  render() {
+    return (
+      <div className="homepage">
+        <img src={logoLink}
+          alt="logo"
+          className="Logo" />
+        <p className="gameRule">some game rules</p>
+        <button onClick={this.Login}>login</button>
+        <button onClick={this.Register}>Register</button>
+      </div>
+    );
+  }
 }
-
-export default Homepage;

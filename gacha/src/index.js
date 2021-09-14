@@ -11,10 +11,7 @@ ReactDOM.render(
   //   <GlobalStyle/>
   //   <App />
   // </React.StrictMode>,
-  <>
-  <App />
-  </>
-  ,
+  <App />,
   document.getElementById('root')
 );
 
