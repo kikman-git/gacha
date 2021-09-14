@@ -24,7 +24,7 @@ export default class GetAdditionChance extends Component {
   render() {
     return (
       <div className="getadditionchance">
-        <h1>GetAdditionalChance</h1>
+        <h1>You can get additional chance by</h1>
         <a 
         href="" 
         className='btn btn--orange btn--radius' 

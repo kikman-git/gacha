@@ -6,15 +6,13 @@ export default class Lack extends Component {
   constructor(props) {
     super(props);
     this.GetAdiitionalChance = this.GetAdiitionalChance.bind(this);
-    this.ShareLink = this.ShareLink.bind(this);
+    
   }
 
   GetAdiitionalChance() {
     this.props.history.push('/get');
   }
-  ShareLink() {
-    this.props.history.push('/share');
-  }
+  
 
 
   render() {
