@@ -15,6 +15,7 @@ class App extends Component {
         <Header />
         <Router >
           <Route exact path="/" component={Gacha} />
+          <Route exact path="/Award" component={Award} />
           {/* <Route path="/gacha" component={Gacha} />
           <Route path="/login" component={Login} /> */}
         </Router>

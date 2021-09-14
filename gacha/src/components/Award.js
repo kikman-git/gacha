@@ -1,16 +1,17 @@
-import React from 'react';
 import Coupon from './Coupon';
-
-class Award extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
-    }
+import '../styles/Award.css';
+import React, { Component } from 'react';
+class Award extends Component {
     render() {
-        return (
-            <Coupon />
-        );
+      return (
+        <div className="AwardContainer">
+            <Coupon 
+             title = "Coupon Name"
+             className="Coupon"
+            />
+        </div>
+      );
     }
-}
-
+  }
+  
 export default Award;
