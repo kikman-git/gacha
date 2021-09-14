@@ -19,7 +19,7 @@ class Coupons(models.Model):
 
     genre = models.CharField(max_length=300, choices = genreChoices)
     value = models.CharField(max_length=150, choices = valueChoices)
-    user_id = models.ForeignKey(UserAccount, on_delete = models.CASCADE)
+    user = models.ForeignKey(UserAccount, on_delete = models.CASCADE)
     expire_date = models.DateField()
     status = models.BooleanField()
 
