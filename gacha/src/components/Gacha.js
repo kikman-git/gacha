@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import '../styles/Gacha.css';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import LogoutButton  from './LogoutButton';
 import gacha from '../resources/gacha_img.png';
 import gacha_ball from '../resources/gacha_ball.png';
 import gacha_btn from '../resources/gacha_btn.png';
 
+// TODO: undo function CouponGenerator; CouponHandler();
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 function CouponGenerator() {
+    
   let valueChoices = [null, '10%', '100y', '200y', '500y', '1000y', '10000y'];
   let valueIndex = getRandomInt(7);
   console.log(valueChoices[valueIndex]);
   if (valueIndex !== 0) {
     return {
       genre: 'GEN',
-      user: JSON.parse(window.sessionStorage.getItem('data'))['user_id'],
+    //   user: JSON.parse(window.sessionStorage.getItem('data'))['user_id'],
       expire_date: '2021-10-10',
       value: valueChoices[valueIndex],
       status: true,
@@ -26,7 +29,9 @@ function CouponGenerator() {
 }
 
 async function addPost() {
-  //   event.preventDefault();
+  let body = JSON.stringify(CouponGenerator());
+  // store Gacha Info in the sessionStorage.
+  window.sessionStorage.setItem('CouponData', JSON.stringify(CouponGenerator()));
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +44,7 @@ async function addPost() {
   try {
     const response = await axios.post(
       'http://127.0.0.1:8000/coupons/create/',
-      JSON.stringify(CouponGenerator()),
+      body,
       config
     );
     console.log(response);
@@ -63,9 +68,12 @@ class Gacha extends Component {
   }
 
   AnimaHandler() {
-    console.log(JSON.stringify(CouponGenerator()));
     const currentState = this.state.active;
     this.setState({ active: !currentState });
+
+    let body = JSON.stringify(CouponGenerator());
+    console.log(body);
+    window.sessionStorage.setItem('CouponData', JSON.stringify(CouponGenerator()));
   }
 
 
@@ -73,7 +81,7 @@ class Gacha extends Component {
     const currentState = this.state;
     this.setState({ couponActive: !currentState.couponActive });
     console.log(currentState.couponActive);
-    addPost(); // Post to backend server
+    //addPost(); // Post to backend server
   }
 
   render() {
@@ -82,6 +90,9 @@ class Gacha extends Component {
     }
     return (
       <div className="GachaContainer">
+        <div className="Logout">
+          <LogoutButton/>
+        </div>
         <img src={gacha} alt="gacha" className="Gacha" />
         <img
           src={gacha_btn}
