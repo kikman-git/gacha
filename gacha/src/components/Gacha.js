@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../styles/Gacha.css';
 import { Redirect } from "react-router-dom";
-
+import axios from 'axios';
 import gacha from '../resources/gacha_img.png';
 import gacha_ball from '../resources/gacha_ball.png';
 import gacha_btn from '../resources/gacha_btn.png';
@@ -15,28 +15,36 @@ function CouponGenerator(){
     let valueIndex = getRandomInt(7);
     if (valueIndex !== 0)
     {
-        return [
+        return(
             {
             "genre" : "GEN",
-            "user" : "1", 
+            "user" : JSON.parse(window.localStorage.getItem("data"))["user_id"], 
             "expire_date" : "2021-10-10", 
             "value" : valueChoices[valueIndex], 
             "status" : true
             }
-        ]
+        )
     }
     
 }
-function addPost() {
-   
-    // fetch('http://127.0.0.1:8000/accounts/coupons/', {
-    //     method: 'PSOT',
-    //     headers: {
-    //         'Accept': 'applicantion/json',
-    //         'Content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(CouponGenerator())
-    // });
+
+async function addPost(event) {
+    event.preventDefault();
+    const config = {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization' : `Token ${JSON.parse(window.localStorage.getItem("data"))["token"] }`
+              }
+            }
+
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/coupons/create/', 
+                            JSON.stringify(CouponGenerator())
+                            , config);
+    } catch (err) {
+        console.log(err);
+    }
+    
 
     
     
@@ -55,18 +63,19 @@ class Gacha extends Component  {
         this.AnimaHandler = this.AnimaHandler.bind(this);
         this.CouponHandler = this.CouponHandler.bind(this); 
     }
+
     AnimaHandler() {
          console.log(JSON.stringify(CouponGenerator()));
-        //addPost();
         const currentState = this.state.active;
         this.setState({ active: !currentState });
     }
+
     CouponHandler() {
         
         const currentState = this.state;
         this.setState({ couponActive: !currentState.couponActive });
         console.log(currentState.couponActive);
-        addPost();
+        addPost(); // Post to backend server
     }
 
     render() {
