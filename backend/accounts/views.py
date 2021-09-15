@@ -27,6 +27,6 @@ class CustomAuthToken(ObtainAuthToken):
             'token': token.key,
             'user_id': user.pk,
             'username': user.username,
-            'gacha_chances' : user.gaccha_chances,
+            'gacha_chances' : user.gacha_chances,
             'rakuten_point' : user.rakuten_point
         })
