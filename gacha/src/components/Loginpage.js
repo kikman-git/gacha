@@ -18,22 +18,37 @@ export default class Loginpage extends Component {
   async Login(event) {
     event.preventDefault();
     console.log('Login function');
-    const config = {
+    const configForaAuthentication = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
+    const body = { username: this.state.UserName, password: this.state.Password }
     try {
       const response = await axios.post(
         `http://127.0.0.1:8000/accounts/login/`,
-        { username: this.state.UserName, password: this.state.Password },
-        config
+        body,
+        configForaAuthentication
       );
+
+      const token = response.data.token
+      const configForCoupons = {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Token ${token}`
+        }
+      }
+
+      const coupon_response = await axios.get(
+        `http://127.0.0.1:8000/coupons/`, configForCoupons
+      )
+      sessionStorage.setItem('coupons',JSON.stringify(coupon_response.data) )
+
 
       this.setState({ isLoggin: true });
       // sessionStorage.setItem('isLogin', true);
       sessionStorage.setItem('userName', this.state.UserName);
-      window.sessionStorage.setItem('data', JSON.stringify(response.data));
+      sessionStorage.setItem('data', JSON.stringify(response.data));
     } catch (err) {
       console.log(err);
     }
