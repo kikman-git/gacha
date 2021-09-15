@@ -12,6 +12,9 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+function GachaChances() {
+  gachaJSON.parse(window.sessionStorage.getItem('data'))['user_id']
+}
 function CouponGenerator() {
     
   let valueChoices = [null, '10%', '100y', '200y', '500y', '1000y', '10000y'];
