@@ -25,8 +25,7 @@ export default class Loginpage extends Component {
     };
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/accounts/login/`,
-        { username: this.state.UserName, password: this.state.Password },
+        `http://127.0.0.1:8000/accounts/login/`, { username: this.state.UserName, password: this.state.Password },
         config
       );
 
@@ -53,26 +52,52 @@ export default class Loginpage extends Component {
     }
     return (
       <div className="login">
-        <form onSubmit={this.Login}>
-          <input
-            type="text"
-            value={this.state.UserName}
-            name="UserName"
-            placeholder="UserName"
-            onChange={this.handleChange}
-          />
-          <br />
-
-          <input
-            type="password"
-            value={this.state.Password}
-            name="Password"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
-          <br />
-          <button>Submit</button>
-        </form>
+        <div className="main-section">
+          <div className="container">
+            <div className="box">
+              <h3 className="spacing-small"> Rakuten Member Login </h3>
+              <form onSubmit={this.Login}>
+                <table className="loginBox">
+                  <tbody>
+                    <tr>
+                      <td className="loginBoxName">
+                        <label className="userid"> UserID </label>
+                      </td>
+                      <td className="loginBoxValue">
+                        <input id="loginInner_u"
+                          type="text"
+                          maxlength="100"
+                          size="25"
+                          value={this.state.UserName}
+                          name="UserName"
+                          placeholder="UserName"
+                          onChange={this.handleChange}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="loginBoxName">
+                        <label className="passwd">Password</label>
+                      </td>
+                      <td className="loginBoxValue">
+                        <input id="loginInner_u"
+                          type="password"
+                          maxlength="100"
+                          size="25"
+                          value={this.state.Password}
+                          name="Password"
+                          placeholder="Password"
+                          onChange={this.handleChange}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button className="loginButton">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
