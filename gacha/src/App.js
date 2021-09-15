@@ -7,6 +7,7 @@ import Footer from './components/footer';
 import Header from './components/header'
 import Homepage from './components/Homepage';
 import Login from './components/Loginpage';
+import Register from './components/RegisterPage';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Router >
           <Route exact path="/" component={Homepage} />
           <Route path="/login" component={Login} /> 
+          <Route path='/register' component={Register} />
           {/* <Route exact path="/Award" component={Award} />
           <Route path="/gacha" component={Gacha} /> */}
           
