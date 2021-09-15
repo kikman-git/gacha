@@ -7,7 +7,7 @@ import Footer from './components/footer';
 import Header from './components/header'
 import Homepage from './components/Homepage';
 import Login from './components/Loginpage';
-
+import Register from './components/RegisterPage'
 import Share from './components/Sharelink'
 import Get from './components/GetAdditionChance'
 import Lack from './components/LackofChance'
@@ -25,6 +25,8 @@ class App extends Component {
           <Route exact path="/Award" component={Award} />
           <Route path="/gacha" component={Gacha} />
           <Route path="/login" component={Login} />
+          <Route path="/homepage" component={Homepage} />
+          <Route path="/register" component={Register} />
 
         </Router>
         <Footer />
