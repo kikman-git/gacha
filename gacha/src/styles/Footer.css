@@ -3,6 +3,7 @@
   color:#f0f9ff;
   background-color:#bf0000;
   text-align:center;
+  width: 100%; 
   
 }
 
@@ -93,24 +94,28 @@
   margin-bottom:0;
 }
 
-.row {
+.footer-red .row {
   display: grid;
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns: repeat(auto-fill, 
-                         minmax(380px, 1fr));
-  grid-gap: 20px;
+
+  grid-template-columns: auto auto auto;
+  grid-gap: auto 20px;
    
-  @media (max-width: 1000px) {
+  /* @media (max-width: 1000px) {
     grid-template-columns: repeat(auto-fill, 
-                           minmax(200px, 1fr));}
+                           minmax(200px, 1fr));} */
   
 }
 
-.column{
+.footer-red .column{
+  
   display: flex;
   flex-direction: column;
   text-align: left;
-  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 1000px; */
+  /* width: 100%;  */
   margin: 0 auto;
 }
