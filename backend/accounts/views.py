@@ -26,5 +26,7 @@ class CustomAuthToken(ObtainAuthToken):
         return Response({
             'token': token.key,
             'user_id': user.pk,
-            'username': user.username
+            'username': user.username,
+            'gacha_chances' : user.gaccha_chances,
+            'rakuten_point' : user.rakuten_point
         })

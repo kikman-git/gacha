@@ -16,10 +16,11 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router >
-          <Route exact path="/share" component={Share} />
-          <Route exact path="/Award" component={Award} />
+          <Route exact path="/" component={Share} />
+          {/* <Route exact path="/Award" component={Award} />
           <Route path="/gacha" component={Gacha} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={Login} /> */}
+
         </Router>
         <Footer />
       </div>

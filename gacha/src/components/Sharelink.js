@@ -13,16 +13,16 @@ export default class Share extends Component {
   }
 
   componentDidMount() {
-    fetch("https://swapi.dev/api/people/1/")
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                link : 'http://gacha.com/' + data.name
-            })
-        })
+    //const userid = JSON.parse(window.sessionStorage.getItem('data'))['user_id'] 
+    const userid = 1
+    // fetch("https://swapi.dev/api/people/1/")
+    //     .then(response => response.json())
+    //     .then(data => {
     this.setState({
-        
-    })
+            link : 'http://gacha.com/' + userid
+
+        })
+        // })
 }
 
   render() {
