@@ -1,3 +1,6 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
 
 # dependencies
 /node_modules
@@ -35,3 +38,5 @@ Thumbs.db
 venv/
 __pycache_/
 
+gacha/src/App.js
+gacha/src/App.js~7d0b026957c559232790216d6b60f5577a8e7f19

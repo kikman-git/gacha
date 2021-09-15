@@ -7,24 +7,39 @@ export default class Share extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        value : 'http://gacha.com/userid',
+        link : '',
         copied : false,
     };
   }
+
+  componentDidMount() {
+    //const userid = JSON.parse(window.sessionStorage.getItem('data'))['user_id'] 
+    const userid = 1
+    // fetch("https://swapi.dev/api/people/1/")
+    //     .then(response => response.json())
+    //     .then(data => {
+    this.setState({
+            link : 'http://gacha.com/' + userid
+
+        })
+        // })
+}
+
   render() {
     return (
       <div className="sharelink">
         {/* <p>http//:Homepage + usercode</p> */}
+       
         <p>Share the link </p>
-        <input 
-            value={this.state.value}
-            onChange={({target: {value}}) => this.setState({value, copied: false})} />
+        
+        <p>
+            {this.state.link}
+        </p>
+         
+         {/* onChange={({target: {value}}) => this.setState({value, copied: false})} */}
         <br/>
         <br/>
-        {/* <div class="btn btn03">
-	        <a href="">Copy</a>
-        </div> */}
-        <CopyToClipboard text={this.state.value}
+        <CopyToClipboard text={this.state.link}
           onCopy={() => this.setState({copied: true})}>
           <button>Copy to clipboard </button>
         </CopyToClipboard>
