@@ -20,8 +20,6 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Homepage} />
           <Route path="/register" component={Register} />
-          <Route path="/gacha" component={Gacha} />
-          <Route path="/Award" component={Award} />
           <Route path="/lack" component={Lack} />
           <Route path="/get" component={Get} />
           <Route path="/share" component={Share} />
