@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import EmailValidator
+import uuid
 # Create your models here.
 class UserAccountManager(BaseUserManager):
     def create_user(self, username, password):
@@ -22,8 +23,9 @@ class UserAccountManager(BaseUserManager):
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True)
-    gaccha_chances = models.IntegerField(null=True)
+    gacha_chances = models.IntegerField(null=True)
     rakuten_point = models.IntegerField(null=True)
+    user_uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
