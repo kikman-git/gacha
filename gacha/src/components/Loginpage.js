@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../styles/Login.css';
+import { Redirect } from "react-router-dom";
 
 export default class Loginpage extends Component {
   constructor(props) {
@@ -25,10 +26,18 @@ export default class Loginpage extends Component {
       const response = await axios.post(`http://127.0.0.1:8000/accounts/login/`, 
                       {username: this.state.UserName, 
                        password: this.state.Password}
-                       , config)
+                       , config);
+
+    sessionStorage.setItem('isLogin', true);
+    sessionStorage.setItem('userName', this.state.UserName);
+    window.sessionStorage.setItem("data", JSON.stringify(response.data));
+
+
     } catch (err) {
       console.log(err);
     }
+
+    
   }
 
   handleChange(event) {
@@ -40,6 +49,7 @@ export default class Loginpage extends Component {
   }
 
   render() {
+    if (sessionStorage.getItem('isLogin')) { return  <Redirect to="/gacha"/>;}
     return (
       <div className="login">
         <form onSubmit={this.Login}>
