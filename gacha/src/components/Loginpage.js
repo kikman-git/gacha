@@ -29,7 +29,6 @@ export default class Loginpage extends Component {
     } catch (err) {
       console.log(err);
     }
-    
   }
 
   handleChange(event) {
