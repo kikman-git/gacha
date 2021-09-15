@@ -8,16 +8,18 @@ import Header from './components/header'
 import Homepage from './components/Homepage';
 import Login from './components/Loginpage';
 
+import Share from './components/Sharelink'
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
         <Router >
-          <Route exact path="/" component={Gacha} />
+          <Route exact path="/share" component={Share} />
           <Route exact path="/Award" component={Award} />
-          {/* <Route path="/gacha" component={Gacha} />
-          <Route path="/login" component={Login} /> */}
+          <Route path="/gacha" component={Gacha} />
+          <Route path="/login" component={Login} />
         </Router>
         <Footer />
       </div>
