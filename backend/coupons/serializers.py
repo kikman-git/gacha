@@ -13,6 +13,8 @@ class CouponSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         token =request.auth.key
         user = Token.objects.get(key=token).user
+        user.gacha_chances -= 1
+        user.save()
         if validated_data["user"].id == user.id:
             return Coupons.objects.create(**validated_data)
         else:

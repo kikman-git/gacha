@@ -50,3 +50,13 @@
 .btn04 a:hover {
 	background-color: #B99b00;
 }
+
+.copied-message {
+	color: red;
+	margin-left: 10px
+}
+
+.sharing-message {
+	font-family: serif;
+    font-weight: 600;
+}
