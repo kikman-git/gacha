@@ -45,13 +45,24 @@ function rewardGenerator(items) {
 // send request to generate new coupon
 async function addPost(value) {
   //   event.preventDefault();
-  const body = {
+  if (value === "notCoupon") {
+    var body = {
+      genre: 'GEN',
+      user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
+      expire_date: '2021-10-10',
+      value: "10%",
+      status: true,
+      is_coupon: false
+    };
+  } else {
+    var body = {
     genre: 'GEN',
-    user: JSON.parse(sessionStorage.getItem('data'))['id'],
+    user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
     expire_date: '2021-10-10',
     value: value,
     status: true,
-  };
+  }
+}
 
   const config = {
     headers: {
@@ -77,6 +88,7 @@ async function addPost(value) {
 
 class Gacha extends Component {
   constructor(props) {
+    console.log(JSON.parse(sessionStorage.getItem('data')))
     super(props);
 
     this.state = {
@@ -126,13 +138,17 @@ class Gacha extends Component {
         this.setState((prevState) => {
           return { couponActive: true };
         });
-      });
+      }).catch((err) => {
+        console.log(err)
+      })
     } else {
-      addPost("not-coupon").then(() => {
+      addPost("notCoupon").then(() => {
         // Wait until promise is resolved
         this.setState((prevState) => {
           return { couponActive: true };
         });
+      }).catch((err) => {
+        console.log(err)
       });
     }
   }
