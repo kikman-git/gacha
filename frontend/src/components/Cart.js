@@ -16,14 +16,16 @@ export default function Cart(props) {
 
 
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.itemCode === product.itemCode);
     if (exist.qty === 1) {
-        var newCartItems = cartItems.filter((x) => x.id !== product.id) 
+        var newCartItems = cartItems.filter((x) => x.itemCode !== product.itemCode) 
+        console.log(newCartItems)
         localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         setCartItems(newCartItems);
     } else {
         var newCartItems = cartItems.map((x) =>
-        x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x)
+        x.itemCode === product.itemCode ? { ...exist, qty: exist.qty - 1 } : x)
+        console.log(newCartItems)
         localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         setCartItems(newCartItems);
     }
