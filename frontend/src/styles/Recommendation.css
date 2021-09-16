@@ -1,0 +1,18 @@
+.cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.search {
+    margin: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
