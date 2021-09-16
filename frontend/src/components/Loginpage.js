@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../styles/Login.css';
 import { Redirect } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 export default class Loginpage extends Component {
   constructor(props) {
@@ -115,7 +116,18 @@ export default class Loginpage extends Component {
                     </tr>
                   </tbody>
                 </table>
-                <button className="loginButton">Login</button>
+                <Button
+                  style={{
+                    fontSize:10,
+                    width:100
+                  }}
+                  
+                  variant="contained" 
+                  color="primary" 
+                  onClick={this.Login}
+                  
+                  
+                >Login</Button>
               </form>
             </div>
           </div>

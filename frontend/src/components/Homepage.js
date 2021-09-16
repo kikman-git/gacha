@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Homepage.css';
 import logoLink from '../resources/rakuten_logo.svg';
+import Button from '@material-ui/core/Button';
 
 export default class Homepage extends Component {
 
@@ -29,10 +30,26 @@ export default class Homepage extends Component {
                 alt="logo"
                 className="Logo" />
               <p>
-                <button onClick={this.Login}>login</button>
+                <Button 
+                style={{
+                  fontSize:10,
+                  width:100
+                }}
+                
+                variant="contained" 
+                color="primary" 
+                onClick={this.Login}>login</Button>
               </p>
               <p>
-                <button onClick={this.Register}>Register</button>
+                <Button 
+                  style={{
+                    fontSize:10,
+                    width:100
+                  }}
+                  
+                  variant="contained" 
+                  color="primary" 
+                  onClick={this.Register}>Register</Button>
               </p>
             </div>
           </div>
