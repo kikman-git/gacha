@@ -10,7 +10,8 @@ __pycache__/
 .pnp.js
 # testing
 /coverage
-
+node_modules/
+/gacha/
 # production
 /build
 

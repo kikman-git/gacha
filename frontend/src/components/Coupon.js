@@ -22,8 +22,7 @@ import Coupon200 from '../resources/coupon200.png';
 import Coupon500 from '../resources/coupon500.png';
 import Coupon1000 from '../resources/coupon1000.png';
 import Coupon10000 from '../resources/coupon10000.png';
-import Coupon10P from '../resources/coupon10%.png';
-
+import Coupon10P from '../resources/coupon10.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-  button:{
+  button: {
     marginTop: '5%',
-  }
+  },
 }));
 
 export default function Coupon() {
@@ -61,49 +60,51 @@ export default function Coupon() {
       setExpireData('Try it again');
       // check if currentReward is a coupon
     } else if ('value' in currentReward) {
-      setCouponValue(`Your Coupon is : ${currentReward.value}`);
+      setCouponValue(`Congratulation!!`);
       setExpireData(currentReward.expire_date);
-
-      if(currentReward.value === "10%") setImg(Coupon10P);
-      if(currentReward.value === "100") setImg(Coupon100);
-      if(currentReward.value === "200") setImg(Coupon200);
-      if(currentReward.value === "500") setImg(Coupon500);
-      if(currentReward.value === "1000") setImg(Coupon1000);
-      if(currentReward.value === "10000") setImg(Coupon10000);
-      
+      console.log(currentReward.value);
+      if (currentReward.value === '10%') setImg(Coupon10P);
+      if (currentReward.value === '100y') setImg(Coupon100);
+      if (currentReward.value === '200y') setImg(Coupon200);
+      if (currentReward.value === '500y') setImg(Coupon500);
+      if (currentReward.value === '1000y') setImg(Coupon1000);
+      if (currentReward.value === '10000y') setImg(Coupon10000);
     } else {
       setCouponValue(`You got an item: ${currentReward.Item.itemName}`);
       setImg(currentReward.Item.mediumImageUrls[0].imageUrl);
     }
 
     // UPDATE GACHA CHANCES
-    //setGachaChances(JSON.parse(sessionStorage.getItem('data')['gacha_chances'])); 
+    setGachaChances(
+      JSON.parse(sessionStorage.getItem('data'))['gacha_chances']
+    );
+
+    // Send request to server to decrease gacha chance
   }, [couponValue]);
 
   // share the link
-  function ShareHandler(){
+  function ShareHandler() {
     console.log('share link');
     setIsShare(true);
   }
 
   // return to the gacha page
-  function ReturnHandler(){
+  function ReturnHandler() {
     console.log('return to gacha page');
     setIsReturn(true);
   }
-  
-  function RecommendHandler(){
+
+  function RecommendHandler() {
     console.log('recommend page');
     setIsReCommend(true);
-
   }
 
   // redirect to share page
-  if(isShare) return <Redirect to="/share" />;
+  if (isShare) return <Redirect to="/share" />;
   // redirect to gacha page
-  if(isReturn) return <Redirect to="/gacha" />;
+  if (isReturn) return <Redirect to="/gacha" />;
   // redirect to recommend page
-  if(isReCommend) return;
+  if (isReCommend) return;
   return (
     <div className="CouponContainer">
       <Card className={classes.root}>
@@ -140,13 +141,24 @@ export default function Coupon() {
           </IconButton>
         </CardActions>
       </Card>
-      
-      <h2>You have {gachaChances} chances to play{gachaChances > 0? '!' : '. Please share!'}</h2>
-      <Button variant="contained" className={classes.button} onClick={gachaChances > 0? ReturnHandler: ShareHandler}>
-        {gachaChances > 0? 'Play Again' : 'Share'}
+
+      <h2>
+        You have {gachaChances} chances to play
+        {gachaChances > 0 ? '!' : '. Please share!'}
+      </h2>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={gachaChances > 0 ? ReturnHandler : ShareHandler}
+      >
+        {gachaChances > 0 ? 'Play Again' : 'Share'}
       </Button>
 
-      <Button variant="contained" className={classes.button} onClick={RecommendHandler}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={RecommendHandler}
+      >
         Recommend
       </Button>
     </div>

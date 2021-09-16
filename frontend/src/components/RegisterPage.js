@@ -100,7 +100,8 @@ export default class RegisterPage extends Component {
                         <label className="userid"> UserID </label>
                       </td>
                       <td className="loginBoxValue">
-                        <input id="loginInner_u"
+                        <input
+                          id="loginInner_u"
                           type="text"
                           value={this.state.UserName}
                           name="UserName"
@@ -115,7 +116,8 @@ export default class RegisterPage extends Component {
                         <label className="passwd">Password</label>
                       </td>
                       <td className="loginBoxValue">
-                        <input id="loginInner_u"
+                        <input
+                          id="loginInner_u"
                           type="password"
                           value={this.state.Password}
                           name="Password"
@@ -125,25 +127,24 @@ export default class RegisterPage extends Component {
                       </td>
                     </tr>
                     <tr>
-
-                    <td className="loginBoxName">
+                      <td className="loginBoxName">
                         <label className="passwd">Confirm Password</label>
                       </td>
-                    <td className="loginBoxValue">
-                    <input id="loginInner_u"
-                      type="password"
-                      value={this.state.ConfirmPassword}
-                      name="ConfirmPassword"
-                      placeholder="Confirm Password"
-                      onChange={this.handleChange}
-                    />
-                    </td>
+                      <td className="loginBoxValue">
+                        <input
+                          id="loginInner_u"
+                          type="password"
+                          value={this.state.ConfirmPassword}
+                          name="ConfirmPassword"
+                          placeholder="Confirm Password"
+                          onChange={this.handleChange}
+                        />
+                      </td>
                     </tr>
-                    <br/>
+                    <br />
                   </tbody>
                 </table>
                 <button className="loginButton">Submit</button>
-
               </form>
             </div>
           </div>

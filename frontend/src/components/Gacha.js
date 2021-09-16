@@ -6,11 +6,9 @@ import axios from 'axios';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import IconButton from '@material-ui/core/IconButton';
 
-
 import gacha from '../resources/gacha_img.png';
 import gacha_ball from '../resources/gacha_ball.png';
 import gacha_btn from '../resources/gacha_btn.png';
-
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -49,8 +47,8 @@ async function addPost(value) {
   //   event.preventDefault();
   const body = {
     genre: 'GEN',
-    user: 1,//JSON.parse(sessionStorage.getItem('data'))['user_id'], //TODO: change it back
-    expire_date: '2021-10-17',
+    user: JSON.parse(sessionStorage.getItem('data'))['id'],
+    expire_date: '2021-10-10',
     value: value,
     status: true,
   };
@@ -78,10 +76,9 @@ async function addPost(value) {
 }
 
 class Gacha extends Component {
-  
   constructor(props) {
     super(props);
-    
+
     this.state = {
       active: false,
       couponActive: false,
@@ -103,7 +100,7 @@ class Gacha extends Component {
   ExitHandler() {
     console.log('exit');
     sessionStorage.clear();
-    this.setState({isExit: true});
+    this.setState({ isExit: true });
   }
   AnimaHandler() {
     // console.log(JSON.stringify(CouponGenerator()));
@@ -137,17 +134,17 @@ class Gacha extends Component {
   }
 
   render() {
-    if(this.state.isExit) return <Redirect to="/" />;
+    if (this.state.isExit) return <Redirect to="/" />;
     if (this.state.couponActive) return <Redirect to="/Award" />;
-    
+
     return (
       <div className="GachaContainer">
         <div className="LogoutButton">
-        <IconButton aria-label="Exit" onClick={this.ExitHandler}>
-            <ExitToAppIcon style={{ fontSize: 40}}/>
-        </IconButton>
+          <IconButton aria-label="Exit" onClick={this.ExitHandler}>
+            <ExitToAppIcon style={{ fontSize: 40 }} />
+          </IconButton>
         </div>
-        
+
         <img src={gacha} alt="gacha" className="Gacha" />
         <img
           src={gacha_btn}
