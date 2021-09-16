@@ -28,6 +28,32 @@ SECRET_KEY = 'django-insecure-0w@ptl@07_^oc%2omypj84_*7ni1n)+6(bv)i@1s)ra8%!5bjs
 DEBUG = True
 
 
+if production:
+    DEBUG = False
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': "heroku_c6e6be868550937", #　作成したデータベース名
+            'USER': 'ba76d8fd8dc05d', # ログインユーザー名
+            'HOST': 'us-cdbr-east-04.cleardb.com',
+            'PASSWORD':"f179d1fe",
+            'PORT': '3306',
+            'OPTIONS': {'charset': 'utf8mb4'}
+        }
+    }
+else:
+    DEBUG = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': "gaccha", #　作成したデータベース名
+            'USER': 'root', # ログインユーザー名
+            'HOST': 'localhost',
+            'PASSWORD':"root",
+            'PORT': '3306',
+            'OPTIONS': {'charset': 'utf8mb4'}
+        }
+    }
 
 # Application definition
 
@@ -81,17 +107,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': "gaccha", #　作成したデータベース名
-            'USER': 'root', # ログインユーザー名
-            'HOST': 'localhost',
-            'PASSWORD':"root",
-            'PORT': '3306',
-            'OPTIONS': {'charset': 'utf8mb4'}
-        }
-    }
+
 
 
 
