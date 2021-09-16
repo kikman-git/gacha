@@ -1,0 +1,40 @@
+.homepage {
+  background: #eeeeee;
+  background-image: url("../resources/Hi.gif");
+  background-size: 20%;
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.main-section {
+  margin-top: 10px;
+}
+
+.container {
+  width: 350px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.box {
+  display: block;
+  height: 250px;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  background-color: #fff;
+}
+
+.spacing-small {
+  border-left: 6px solid #bf0000;
+  padding: 0px 2px 0px 10px;
+  font-size: 120%;
+  font-weight: bold;
+  line-height: 2;
+  margin-bottom: 0px;
+}
+
+.loginButton {
+  vertical-align: text-top;
+}

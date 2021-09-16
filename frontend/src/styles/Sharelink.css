@@ -1,0 +1,62 @@
+.btn03 a {
+	background-color: #ceb849;
+	border: 1px solid transparent;
+}
+
+.btn03 a::before {
+	content: '';
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 1px solid #333;
+}
+
+.btn03 a::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -35px;
+	transform: translateY(-50%);
+	width: 70px;
+	height: 1px;
+	background-color: #333;
+}
+
+.btn03 a:hover {
+	background-color: #B99b00;
+}
+
+.btn04 a {
+	background-color: #ceb849;
+	border: 1px solid transparent;
+	border-radius: 35px;
+}
+
+.btn04 a::before {
+	content: '';
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 1px solid #333;
+	border-radius: 35px;
+}
+
+.btn04 a:hover {
+	background-color: #B99b00;
+}
+
+.copied-message {
+	color: red;
+	margin-left: 10px
+}
+
+.sharing-message {
+	font-family: serif;
+    font-weight: 600;
+}
