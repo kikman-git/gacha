@@ -11,6 +11,8 @@ import Register from './components/RegisterPage';
 import Share from './components/ShareLink';
 import Get from './components/GetAdditionChance';
 import Lack from './components/LackofChance';
+import Recommendation from './components/Recommendation'
+import ItemDetail from "./components/ItemDetail"
 
 class App extends Component {
   render() {
@@ -26,6 +28,8 @@ class App extends Component {
           <Route path="/Award" component={Award} />
           <Route path="/gacha" component={Gacha} />
           <Route path="/login" component={Login} />
+          <Route path="/recommendation" component={Recommendation} />
+          <Route path="/item/:itemCode" component={ItemDetail} />
         </Router>
         <Footer />
       </div>

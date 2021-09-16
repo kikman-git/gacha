@@ -43,7 +43,7 @@ async function addPost(value) {
   //   event.preventDefault();
   const body = {
     genre: 'GEN',
-    user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
+    user: JSON.parse(sessionStorage.getItem('data'))['id'],
     expire_date: '2021-10-10',
     value: value,
     status: true,
