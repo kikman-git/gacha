@@ -23,6 +23,7 @@ import Coupon500 from '../resources/coupon500.png';
 import Coupon1000 from '../resources/coupon1000.png';
 import Coupon10000 from '../resources/coupon10000.png';
 import Coupon10P from '../resources/coupon10.png';
+import NullReward from '../resources/couponNull.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,7 @@ export default function Coupon() {
     if (currentReward === null) {
       setCouponValue(`Sorry you get nothing`);
       setExpireData('Try it again');
+      setImg(NullReward);
       // check if currentReward is a coupon
     } else if ('value' in currentReward) {
       setCouponValue(`Congratulation!!`);

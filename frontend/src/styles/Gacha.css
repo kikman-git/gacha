@@ -48,3 +48,12 @@
   opacity: 1;
   transform: translateY(25px);
 }
+
+.GachaBack{
+  background: #eeeeee;
+  position: relative;
+  background-image: url(../resources/guide.png),url(../resources/playit.gif);
+  background-size: 30%;
+  background-position: 10% 70%, 90% 40%;
+  background-repeat: no-repeat;
+}

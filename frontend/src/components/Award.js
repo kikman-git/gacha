@@ -24,6 +24,7 @@ class Award extends Component {
   render() {
     if(this.state.isExit) return <Redirect to="/" />;
     return (
+      <div className="AwardBack">
       <div className="AwardContainer">
         <div className="LogoutButton">
         <IconButton aria-label="Exit" onClick={this.ExitHandler}>
@@ -32,6 +33,7 @@ class Award extends Component {
         </div>
 
         <Coupon title="Coupon Name" className="Coupon" />
+      </div>
       </div>
     );
   }
