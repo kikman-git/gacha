@@ -30,14 +30,16 @@
   height: 50px;
   position: relative;
 }
-.GachaBall {
-  position: absolute;
-  margin-top: 580px;
-  margin-left: -15px;
-  opacity: 0;
-  transition: all 0.2s ease-in 1s;
-  transform-origin: center center;
+
+.GachaBack{
+  background: #eeeeee;
+  position: relative;
+  background-image: url(../resources/guide.png),url(../resources/playit.gif);
+  background-size: 30%;
+  background-position: 10% 70%, 90% 40%;
+  background-repeat: no-repeat;
 }
+
 .GachaBall-anima {
   /* animation: spin 2s linear infinite; */
   opacity: 1;
