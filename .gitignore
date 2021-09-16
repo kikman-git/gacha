@@ -4,9 +4,10 @@ __pycache__/
 
 # dependencies
 /frontend/node_modules
+/node_modules
+/gacha
 /.pnp
 .pnp.js
-
 # testing
 /coverage
 node_modules/

@@ -17,7 +17,7 @@
   .box {
     
     display: block;
-    height: 290px;
+    height: 380px;
     width: 500px;
     border-radius: 4px;
     border: 1px #ddd solid;
@@ -36,4 +36,3 @@
   .loginButton {
     vertical-align: text-top;
   }
-  

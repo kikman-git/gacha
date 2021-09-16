@@ -1,5 +1,9 @@
 .homepage {
   background: #eeeeee;
+  background-image: url("../resources/Hi.gif");
+  background-size: 20%;
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
   text-align: center;
   margin-bottom: 30px;
 }
