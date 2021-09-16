@@ -15,7 +15,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CouponImg from '../resources/paella.jpg';
+import CouponLogo from '../resources/paella.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,18 +33,22 @@ const useStyles = makeStyles((theme) => ({
 export default function Coupon() {
   const classes = useStyles();
   const [couponValue, setCouponValue] = React.useState('init couponValue');
-  const [expireData, setExpireData] = React.useState('init expireData');
+  const [expireData, setExpireData] = React.useState('');
+  const [CouponImg, setImg] = React.useState(CouponLogo);
 
   useEffect(() => {
-    const currentCouponValue = JSON.parse(
-      window.sessionStorage.getItem('CouponData')
-    );
-    if (currentCouponValue.value == null) {
+    const currentReward = JSON.parse(sessionStorage.getItem('reward'));
+    console.log('coupon.js currentReward: ', currentReward);
+    if (currentReward === null) {
       setCouponValue(`Sorry you get nothing`);
       setExpireData('Try it again');
+      // check if currentReward is a coupon
+    } else if ('value' in currentReward) {
+      setCouponValue(`Your Coupon is : ${currentReward.value}`);
+      setExpireData(currentReward.expire_date);
     } else {
-      setCouponValue(`Your Coupon is : ${currentCouponValue.value}`);
-      setExpireData(currentCouponValue.expire_date);
+      setCouponValue(`You got an item: ${currentReward.Item.itemName}`);
+      setImg(currentReward.Item.mediumImageUrls[0].imageUrl);
     }
   }, [couponValue]);
 
@@ -68,11 +72,11 @@ export default function Coupon() {
         <CardMedia
           className={classes.media}
           image={CouponImg}
-          title="Paella dish"
+          title={'Paella dish'}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Coupon Description.
+            Coupon Description. {CouponImg}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
