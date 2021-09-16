@@ -127,10 +127,14 @@ class Gacha extends Component {
           return { couponActive: true };
         });
       });
-    } else
-      this.setState((prevState) => {
-        return { couponActive: true };
+    } else {
+      addPost("not-coupon").then(() => {
+        // Wait until promise is resolved
+        this.setState((prevState) => {
+          return { couponActive: true };
+        });
       });
+    }
   }
 
   render() {
