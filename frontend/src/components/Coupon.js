@@ -24,6 +24,7 @@ import Coupon1000 from '../resources/coupon1000.png';
 import Coupon10000 from '../resources/coupon10000.png';
 import Coupon10P from '../resources/coupon10.png';
 import NullReward from '../resources/couponNull.png';
+import ShareLink from './ShareLink'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +56,7 @@ export default function Coupon() {
   );
   const [gachaChances, setGachaChances] = React.useState(1);
   const [Description, setDesc] = React.useState('');
+  const [shareOpen, setShareOpen] = React.useState(false)
 
   useEffect(() => {
     // const currentReward = JSON.parse(sessionStorage.getItem('reward'));
@@ -94,7 +96,7 @@ export default function Coupon() {
   // share the link
   function ShareHandler() {
     console.log('share link');
-    setIsShare(true);
+    setShareOpen(true)
   }
 
   // return to the gacha page
@@ -170,6 +172,7 @@ export default function Coupon() {
       >
         Recommendation
       </Button>
+      <ShareLink open={shareOpen} setOpen={setShareOpen}/>
     </div>
   );
 }
