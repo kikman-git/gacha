@@ -11,8 +11,8 @@ import Register from './components/RegisterPage';
 import Share from './components/ShareLink';
 import Get from './components/GetAdditionChance';
 import Lack from './components/LackofChance';
-import Recommendation from './components/Recommendation'
-import ItemDetail from "./components/ItemDetail"
+import Recommendation from './components/Recommendation';
+import ItemDetail from './components/ItemDetail';
 
 class App extends Component {
   render() {
@@ -20,9 +20,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
-          <Route path="/homepage" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
           <Route path="/register" component={Register} />
-          <Route exact path="/" component={Lack} />
+          <Route path="/lack" component={Lack} />
           <Route path="/get" component={Get} />
           <Route path="/share" component={Share} />
           <Route path="/Award" component={Award} />
