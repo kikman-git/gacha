@@ -46,7 +46,7 @@ export default function Cart(props) {
             </div>
 
             <div className="col-2 text-right">
-              {item.qty} x ${item.itemPrice.toFixed(2)}
+              {item.qty} x {item.itemPrice.toFixed(2)}yen
             </div>
           </div>
         ))}
@@ -65,7 +65,7 @@ export default function Cart(props) {
             <div className="row">
               <div className="col-2">Shipping Price</div>
               <div className="col-1 text-right">
-                ${shippingPrice.toFixed(2)}
+                {shippingPrice.toFixed(2)}yen
               </div>
             </div>
 
@@ -74,7 +74,7 @@ export default function Cart(props) {
                 <strong>Total Price</strong>
               </div>
               <div className="col-1 text-right">
-                <strong>${totalPrice.toFixed(2)}</strong>
+                <strong>{totalPrice.toFixed(2)}yen</strong>
               </div>
             </div>
             <hr />
