@@ -10,14 +10,27 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-async function rewardGenerator(items) {
+function rewardGenerator(items) {
   //   const items = await itemGenerator();
   console.log(items);
-  let rewardList = [null, '10%', '100y', '200y', '500y', '1000y', '10000y']; //.concat(items);
+  let rewardList = [
+    null,
+    '10%',
+    '100y',
+    '200y',
+    '500y',
+    '1000y',
+    '10000y',
+  ].concat(items);
 
   // Get random index number
   let valueIndex = getRandomInt(rewardList.length);
-  console.log(rewardList[valueIndex]);
+  console.log('Got reward: ', rewardList[valueIndex]);
+  console.log(
+    'rewardGenerator ',
+    rewardList[valueIndex],
+    typeof rewardList[valueIndex]
+  );
   return rewardList[valueIndex];
 }
 
@@ -30,7 +43,7 @@ async function addPost(value) {
   //   event.preventDefault();
   const body = {
     genre: 'GEN',
-    user: JSON.parse(window.sessionStorage.getItem('data'))['id'],
+    user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
     expire_date: '2021-10-10',
     value: value,
     status: true,
@@ -40,11 +53,11 @@ async function addPost(value) {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Token ${
-        JSON.parse(window.sessionStorage.getItem('data'))['token']
+        JSON.parse(sessionStorage.getItem('data'))['token']
       }`,
     },
   };
-
+  console.log(body, config);
   try {
     const response = await axios.post(
       'http://127.0.0.1:8000/coupons/create/',
@@ -52,7 +65,7 @@ async function addPost(value) {
       config
     );
     console.log('created coupon', response);
-    sessionStorage.setItem('new_coupon', JSON.stringify(response.data));
+    sessionStorage.setItem('reward', JSON.stringify(response.data));
   } catch (err) {
     console.log(err);
   }
@@ -76,7 +89,7 @@ class Gacha extends Component {
     const apiEndpoint = `https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?format=json&age=20&applicationId=${applicationId}`;
     fetch(apiEndpoint)
       .then((response) => response.json())
-      .then((data) => this.setState({ items: data }));
+      .then((data) => this.setState({ items: data.Items }));
   }
 
   AnimaHandler() {
@@ -89,20 +102,25 @@ class Gacha extends Component {
     // rewardList [null, ...7coupons, ...30products]
     const reward = rewardGenerator(this.state.items);
 
-    // if index != 0 which means got reward
-    console.log(typeof reward);
-    if (reward) {
-      const currentState = this.state;
-      this.setState({ couponActive: !currentState.couponActive });
+    // store to session
+    sessionStorage.setItem('reward', JSON.stringify(reward));
 
-      // check if reward is a coupon or a product
-      // if it is a coupon
-      if (typeof reward === String) {
-        console.log('coupon created');
-        addPost(reward); // Post to backend server
-      }
-    }
-    sessionStorage.setItem('reward', reward);
+    // if index != 0 which means got reward
+
+    // if it is a coupon
+    if (typeof reward === 'string') {
+      console.log('CouponHandler reward: ', reward, typeof reward);
+      // Post to backend server
+      addPost(reward).then(() => {
+        // Wait until promise is resolved
+        this.setState((prevState) => {
+          return { couponActive: true };
+        });
+      });
+    } else
+      this.setState((prevState) => {
+        return { couponActive: true };
+      });
   }
 
   render() {
