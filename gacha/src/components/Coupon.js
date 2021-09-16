@@ -36,9 +36,7 @@ export default function Coupon() {
   const [expireData, setExpireData] = React.useState('init expireData');
 
   useEffect(() => {
-    const currentCouponValue = JSON.parse(
-      window.sessionStorage.getItem('CouponData')
-    );
+    const currentCouponValue = JSON.parse(sessionStorage.getItem('new_coupon'));
     if (currentCouponValue.value == null) {
       setCouponValue(`Sorry you get nothing`);
       setExpireData('Try it again');

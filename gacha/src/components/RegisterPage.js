@@ -6,8 +6,8 @@ import { Redirect } from 'react-router-dom';
 export default class RegisterPage extends Component {
   constructor(props) {
     super(props);
-    console.log(props.match.params.friend_uuid)
-    console.log(this.props.friend_uuid)
+    console.log(props.match.params.friend_uuid);
+    console.log(this.props.friend_uuid);
     this.state = {
       UserName: '',
       Password: '',
@@ -31,34 +31,35 @@ export default class RegisterPage extends Component {
           username: this.state.UserName,
           password: this.state.Password,
           confirm_password: this.state.ConfirmPassword,
-        }
+        };
       } else {
         var body = {
           username: this.state.UserName,
           password: this.state.Password,
           confirm_password: this.state.ConfirmPassword,
-          friend_uuid: this.props.match.params.friend_uuid
-        }
+          friend_uuid: this.props.match.params.friend_uuid,
+        };
       }
       const response = await axios.post(
         `http://127.0.0.1:8000/accounts/register/`,
         body,
         configForaAuthentication
       );
-      console.log(response)
-      const token = response.data.token
+      console.log(response);
+      const token = response.data.token;
       const configForCoupons = {
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Token ${token}`
-        }
-      }
-      console.log(configForCoupons)
+          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`,
+        },
+      };
+      console.log(configForCoupons);
 
       const coupon_response = await axios.get(
-        `http://127.0.0.1:8000/coupons/`, configForCoupons
-      )
-      sessionStorage.setItem('coupons',JSON.stringify(coupon_response.data) )
+        `http://127.0.0.1:8000/coupons/`,
+        configForCoupons
+      );
+      sessionStorage.setItem('coupons', JSON.stringify(coupon_response.data));
 
       // sessionStorage.setItem('isLogin', true);
       this.setState({ isLoggin: true });
