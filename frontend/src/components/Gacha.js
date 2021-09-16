@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import '../styles/Gacha.css';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import IconButton from '@material-ui/core/IconButton';
+
+
 import gacha from '../resources/gacha_img.png';
 import gacha_ball from '../resources/gacha_ball.png';
 import gacha_btn from '../resources/gacha_btn.png';
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -21,7 +27,7 @@ function rewardGenerator(items) {
     '500y',
     '1000y',
     '10000y',
-  ].concat(items);
+  ].concat(items); //TODO: change it back
 
   // Get random index number
   let valueIndex = getRandomInt(rewardList.length);
@@ -43,8 +49,8 @@ async function addPost(value) {
   //   event.preventDefault();
   const body = {
     genre: 'GEN',
-    user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
-    expire_date: '2021-10-10',
+    user: 1,//JSON.parse(sessionStorage.getItem('data'))['user_id'], //TODO: change it back
+    expire_date: '2021-10-17',
     value: value,
     status: true,
   };
@@ -72,17 +78,19 @@ async function addPost(value) {
 }
 
 class Gacha extends Component {
+  
   constructor(props) {
     super(props);
-
+    
     this.state = {
       active: false,
       couponActive: false,
+      isExit: false,
       items: [],
     };
-
     this.AnimaHandler = this.AnimaHandler.bind(this);
     this.CouponHandler = this.CouponHandler.bind(this);
+    this.ExitHandler = this.ExitHandler.bind(this);
   }
   componentDidMount() {
     const applicationId = '1074305052326638295';
@@ -92,6 +100,11 @@ class Gacha extends Component {
       .then((data) => this.setState({ items: data.Items }));
   }
 
+  ExitHandler() {
+    console.log('exit');
+    sessionStorage.clear();
+    this.setState({isExit: true});
+  }
   AnimaHandler() {
     // console.log(JSON.stringify(CouponGenerator()));
     const currentState = this.state.active;
@@ -124,11 +137,17 @@ class Gacha extends Component {
   }
 
   render() {
-    if (this.state.couponActive) {
-      return <Redirect to="/Award" />;
-    }
+    if(this.state.isExit) return <Redirect to="/" />;
+    if (this.state.couponActive) return <Redirect to="/Award" />;
+    
     return (
       <div className="GachaContainer">
+        <div className="LogoutButton">
+        <IconButton aria-label="Exit" onClick={this.ExitHandler}>
+            <ExitToAppIcon style={{ fontSize: 40}}/>
+        </IconButton>
+        </div>
+        
         <img src={gacha} alt="gacha" className="Gacha" />
         <img
           src={gacha_btn}
@@ -146,10 +165,6 @@ class Gacha extends Component {
           }
           onClick={this.CouponHandler}
         />
-        <button className="playBtn" onClick={this.AnimaHandler}>
-          {' '}
-          Play{' '}
-        </button>
       </div>
     );
   }
