@@ -30,7 +30,7 @@ export default class Loginpage extends Component {
     };
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/accounts/login/`,
+        `${process.env.REACT_APP_BACKEND_URI}/accounts/login/`,
         body,
         configForaAuthentication
       );
@@ -44,7 +44,7 @@ export default class Loginpage extends Component {
       };
 
       const coupon_response = await axios.get(
-        `http://127.0.0.1:8000/coupons/`,
+        `${process.env.REACT_APP_BACKEND_URI}/coupons/`,
         configForCoupons
       );
       sessionStorage.setItem('coupons', JSON.stringify(coupon_response.data));

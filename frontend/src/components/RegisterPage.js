@@ -43,7 +43,7 @@ export default class RegisterPage extends Component {
         };
       }
       const response = await axios.post(
-        `http://127.0.0.1:8000/accounts/register/`,
+        `${process.env.REACT_APP_BACKEND_URI}/accounts/register/`,
         body,
         configForaAuthentication
       );
@@ -58,7 +58,7 @@ export default class RegisterPage extends Component {
       console.log(configForCoupons);
 
       const coupon_response = await axios.get(
-        `http://127.0.0.1:8000/coupons/`,
+        `${process.env.REACT_APP_BACKEND_URI}/coupons/`,
         configForCoupons
       );
       sessionStorage.setItem('coupons', JSON.stringify(coupon_response.data));

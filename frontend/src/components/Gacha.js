@@ -76,7 +76,7 @@ async function addPost(value) {
   console.log(body, config);
   try {
     const response = await axios.post(
-      'http://127.0.0.1:8000/coupons/create/',
+      `${process.env.REACT_APP_BACKEND_URI}/coupons/create/`,
       JSON.stringify(body),
       config
     );
