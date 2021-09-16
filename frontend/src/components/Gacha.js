@@ -139,31 +139,31 @@ class Gacha extends Component {
 
     return (
       <div className="GachaBack">
-      <div className="GachaContainer">
-        <div className="LogoutButton">
-          <IconButton aria-label="Exit" onClick={this.ExitHandler}>
-            <ExitToAppIcon style={{ fontSize: 40 }} />
-          </IconButton>
-        </div>
+        <div className="GachaContainer">
+          <div className="LogoutButton">
+            <IconButton aria-label="Exit" onClick={this.ExitHandler}>
+              <ExitToAppIcon style={{ fontSize: 40 }} />
+            </IconButton>
+          </div>
 
-        <img src={gacha} alt="gacha" className="Gacha" />
-        <img
-          src={gacha_btn}
-          alt="gacha_btn"
-          className={
-            this.state.active ? 'GachaBtn GachaBtn-rotate' : 'GachaBtn'
-          }
-          onClick={this.AnimaHandler}
-        />
-        <img
-          src={gacha_ball}
-          alt="gacha_ball"
-          className={
-            this.state.active ? 'GachaBall GachaBall-anima' : 'GachaBall'
-          }
-          onClick={this.CouponHandler}
-        />
-      </div>
+          <img src={gacha} alt="gacha" className="Gacha" />
+          <img
+            src={gacha_btn}
+            alt="gacha_btn"
+            className={
+              this.state.active ? 'GachaBtn GachaBtn-rotate' : 'GachaBtn'
+            }
+            onClick={this.AnimaHandler}
+          />
+          <img
+            src={gacha_ball}
+            alt="gacha_ball"
+            className={
+              this.state.active ? 'GachaBall GachaBall-anima' : 'GachaBall'
+            }
+            onClick={this.CouponHandler}
+          />
+        </div>
       </div>
     );
   }

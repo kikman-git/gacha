@@ -118,16 +118,15 @@ export default class Loginpage extends Component {
                 </table>
                 <Button
                   style={{
-                    fontSize:10,
-                    width:100
+                    fontSize: 10,
+                    width: 100,
                   }}
-                  
-                  variant="contained" 
-                  color="primary" 
+                  variant="contained"
+                  color="primary"
                   onClick={this.Login}
-                  
-                  
-                >Login</Button>
+                >
+                  Login
+                </Button>
               </form>
             </div>
           </div>
