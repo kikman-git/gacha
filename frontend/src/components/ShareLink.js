@@ -51,8 +51,8 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 
-export default function ShareLink() {
-  const [open, setOpen] = React.useState(false);
+export default function ShareLink(props) {
+  const {open, setOpen} = props
   const [copied, setCopied] = React.useState(false);
   const user_uuid = JSON.parse(window.sessionStorage.getItem('data'))[
     'user_uuid'
@@ -60,9 +60,6 @@ export default function ShareLink() {
   console.log(user_uuid);
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
-        Get extra gacha chance
-      </Button>
       <Dialog
         onClose={() => setOpen(false)}
         aria-labelledby="customized-dialog-title"
