@@ -13,7 +13,7 @@ function getRandomInt(max) {
 }
 
 function GachaChances() {
-  gachaJSON.parse(window.sessionStorage.getItem('data'))['user_id']
+  // gachaJSON.parse(window.sessionStorage.getItem('data'))['user_id']
 }
 function CouponGenerator() {
     
