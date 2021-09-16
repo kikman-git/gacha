@@ -62,34 +62,66 @@ export default class RegisterPage extends Component {
 
     return (
       <div className="login">
-        <form onSubmit={this.Register}>
-          <input
-            type="text"
-            value={this.state.UserName}
-            name="UserName"
-            placeholder="UserName"
-            onChange={this.handleChange}
-          />
-          <br />
+        <div className="main-section">
+          <div className="container">
+            <div className="box">
+              <h3 className="spacing-small"> Rakuten Member register </h3>
+              <form onSubmit={this.Register}>
+                <table className="loginBox">
+                  <tbody>
+                    <tr>
+                      <td className="loginBoxName">
+                        <label className="userid"> UserID </label>
+                      </td>
+                      <td className="loginBoxValue">
+                        <input id="loginInner_u"
+                          type="text"
+                          value={this.state.UserName}
+                          name="UserName"
+                          placeholder="UserName"
+                          onChange={this.handleChange}
+                        />
+                      </td>
+                    </tr>
 
-          <input
-            type="password"
-            value={this.state.Password}
-            name="Password"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            type="password"
-            value={this.state.ConfirmPassword}
-            name="ConfirmPassword"
-            placeholder="Confirm Password"
-            onChange={this.handleChange}
-          />
-          <br />
-          <button>Submit</button>
-        </form>
+                    <tr>
+                      <td className="loginBoxName">
+                        <label className="passwd">Password</label>
+                      </td>
+                      <td className="loginBoxValue">
+                        <input id="loginInner_u"
+                          type="password"
+                          value={this.state.Password}
+                          name="Password"
+                          placeholder="Password"
+                          onChange={this.handleChange}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+
+                    <td className="loginBoxName">
+                        <label className="passwd">Confirm Password</label>
+                      </td>
+                    <td className="loginBoxValue">
+                    <input id="loginInner_u"
+                      type="password"
+                      value={this.state.ConfirmPassword}
+                      name="ConfirmPassword"
+                      placeholder="Confirm Password"
+                      onChange={this.handleChange}
+                    />
+                    </td>
+                    </tr>
+                    <br/>
+                  </tbody>
+                </table>
+                <button className="loginButton">Submit</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
