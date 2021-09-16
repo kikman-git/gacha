@@ -138,6 +138,7 @@ class Gacha extends Component {
     if (this.state.couponActive) return <Redirect to="/Award" />;
 
     return (
+      <div className="GachaBack">
       <div className="GachaContainer">
         <div className="LogoutButton">
           <IconButton aria-label="Exit" onClick={this.ExitHandler}>
@@ -162,6 +163,7 @@ class Gacha extends Component {
           }
           onClick={this.CouponHandler}
         />
+      </div>
       </div>
     );
   }

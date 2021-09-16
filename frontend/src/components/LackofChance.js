@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/LackofChance.css';
 import Button from '@material-ui/core/Button';
+import sad from '../resources/sad.gif';
 
 export default class Lack extends Component {
 
@@ -23,10 +24,8 @@ export default class Lack extends Component {
           <div className="container">
             <div className="box">
               <h1>You don’t have enough chance</h1>
-              <br/>
-              <br/>
-              <p>Note:every customer will get a free chance after login every day</p>
-              <br />
+              <img src={sad}  width="130" height="130" />
+              <p>Note: every customer will get a free chance after login every day</p>
               <br />
               <Button 
                 style={{
