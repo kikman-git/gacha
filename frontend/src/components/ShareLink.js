@@ -75,7 +75,7 @@ export default function ShareLink() {
           <img src={rakutenLogo} width={100} />
         </DialogTitle>
         <DialogContent dividers>
-          <p className="sharing-message">Share with your frineds!</p>
+          <p className="sharing-message">Share with your friends!</p>
           <p>http://localhost:3000/register/{user_uuid}</p>
           <CopyToClipboard
             text={`http://localhost:3000/register/${user_uuid}`}

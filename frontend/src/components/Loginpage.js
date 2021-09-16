@@ -49,11 +49,13 @@ export default class Loginpage extends Component {
       );
       sessionStorage.setItem('coupons', JSON.stringify(coupon_response.data));
 
-      this.setState({ isLoggin: true });
+      // console.log(response.data);
+
       // sessionStorage.setItem('isLogin', true);
       sessionStorage.setItem('userName', this.state.UserName);
       sessionStorage.setItem('data', JSON.stringify(response.data));
-      console.log(JSON.parse(sessionStorage.getItem('data')));
+      sessionStorage.setItem('gacha_chances', response.data.gacha_chances);
+      this.setState({ isLoggin: true });
     } catch (err) {
       console.log(err);
     }

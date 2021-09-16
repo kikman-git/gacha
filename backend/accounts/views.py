@@ -36,7 +36,7 @@ class CustomAuthToken(ObtainAuthToken):
         token, created = Token.objects.get_or_create(user=user)
         return Response({
             'token': token.key,
-            'user_id': user.pk,
+            'id': user.pk,
             "user_uuid": user.user_uuid,
             'username': user.username,
             'gacha_chances' : user.gacha_chances,

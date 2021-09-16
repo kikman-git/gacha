@@ -64,10 +64,12 @@ export default class RegisterPage extends Component {
       // sessionStorage.setItem('isLogin', true);
       this.setState({ isLoggin: true });
       sessionStorage.setItem('userName', this.state.UserName);
-      window.sessionStorage.setItem('data', JSON.stringify(response.data));
+      sessionStorage.setItem('data', JSON.stringify(response.data));
+      sessionStorage.setItem('gacha_chances', response.data.gacha_chances);
+      console.log('gacha_chances', sessionStorage.getItem('gacha_chances'));
       // var meta1 = JSON.parse(window.localStorage.getItem("meta")); // -> retrive the data from local storage
 
-      console.log(response);
+      console.log('Register: ', response.data);
     } catch (err) {
       console.log(err);
     }

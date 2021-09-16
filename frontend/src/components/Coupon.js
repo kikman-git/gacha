@@ -46,25 +46,31 @@ export default function Coupon() {
   const [couponValue, setCouponValue] = React.useState('init couponValue');
   const [expireData, setExpireData] = React.useState('');
   const [CouponImg, setImg] = React.useState(CouponLogo);
-
+  // const [rewardType, setRewardType] = React.useState('');
   const [isShare, setIsShare] = React.useState(false);
   const [isReturn, setIsReturn] = React.useState(false);
   const [isReCommend, setIsReCommend] = React.useState(false);
-
+  const [currentReward, setReward] = React.useState(
+    JSON.parse(sessionStorage.getItem('reward'))
+  );
   const [gachaChances, setGachaChances] = React.useState(1);
+  const [Description, setDesc] = React.useState('');
 
   useEffect(() => {
-    const currentReward = JSON.parse(sessionStorage.getItem('reward'));
-    console.log('coupon.js currentReward: ', currentReward);
+    // const currentReward = JSON.parse(sessionStorage.getItem('reward'));
+    // console.log('coupon.js currentReward: ', currentReward);
     if (currentReward === null) {
       setCouponValue(`Sorry you get nothing`);
       setExpireData('Try it again');
       setImg(NullReward);
       // check if currentReward is a coupon
     } else if ('value' in currentReward) {
-      setCouponValue(`Congratulation!!`);
+      setCouponValue(`Congratulation, You got a Coupon!!!`);
       setExpireData(currentReward.expire_date);
-      console.log(currentReward.value);
+      setDesc(
+        'Coupons can be used to for all products on Rakuten Ichiba. Click on Recommendation to use your Coupon now!!'
+      );
+      // console.log(currentReward.value);
       if (currentReward.value === '10%') setImg(Coupon10P);
       if (currentReward.value === '100y') setImg(Coupon100);
       if (currentReward.value === '200y') setImg(Coupon200);
@@ -72,14 +78,15 @@ export default function Coupon() {
       if (currentReward.value === '1000y') setImg(Coupon1000);
       if (currentReward.value === '10000y') setImg(Coupon10000);
     } else {
-      setCouponValue(`You got an item: ${currentReward.Item.itemName}`);
+      setCouponValue(`Amazing, You got an item voucher!`);
       setImg(currentReward.Item.mediumImageUrls[0].imageUrl);
+      setDesc(
+        `${currentReward.Item.itemName}. Price: ¥${currentReward.Item.itemPrice}`
+      );
     }
 
     // UPDATE GACHA CHANCES
-    setGachaChances(
-      JSON.parse(sessionStorage.getItem('data'))['gacha_chances']
-    );
+    setGachaChances(sessionStorage.getItem('gacha_chances'));
 
     // Send request to server to decrease gacha chance
   }, [couponValue]);
@@ -106,7 +113,7 @@ export default function Coupon() {
   // redirect to gacha page
   if (isReturn) return <Redirect to="/gacha" />;
   // redirect to recommend page
-  if (isReCommend) return;
+  if (isReCommend) return <Redirect to="/recommendation" />;
   return (
     <div className="CouponContainer">
       <Card className={classes.root}>
@@ -131,7 +138,7 @@ export default function Coupon() {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Coupon Description. {CouponImg}
+            {Description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -161,7 +168,7 @@ export default function Coupon() {
         className={classes.button}
         onClick={RecommendHandler}
       >
-        Recommend
+        Recommendation
       </Button>
     </div>
   );

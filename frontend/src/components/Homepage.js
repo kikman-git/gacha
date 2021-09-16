@@ -27,26 +27,30 @@ export default class Homepage extends Component {
               <h3 className="spacing-small"> Gacha game in Rakuten Ichiba</h3>
               <img src={logoLink} alt="logo" className="Logo" />
               <p>
-                <Button 
-                style={{
-                  fontSize:10,
-                  width:100
-                }}
-                
-                variant="contained" 
-                color="primary" 
-                onClick={this.Login}>login</Button>
+                <Button
+                  style={{
+                    fontSize: 10,
+                    width: 100,
+                  }}
+                  variant="contained"
+                  color="primary"
+                  onClick={this.Login}
+                >
+                  login
+                </Button>
               </p>
               <p>
-                <Button 
+                <Button
                   style={{
-                    fontSize:10,
-                    width:100
+                    fontSize: 10,
+                    width: 100,
                   }}
-                  
-                  variant="contained" 
-                  color="primary" 
-                  onClick={this.Register}>Register</Button>
+                  variant="contained"
+                  color="primary"
+                  onClick={this.Register}
+                >
+                  Register
+                </Button>
               </p>
             </div>
           </div>

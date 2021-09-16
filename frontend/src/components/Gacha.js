@@ -16,7 +16,7 @@ function getRandomInt(max) {
 
 function rewardGenerator(items) {
   //   const items = await itemGenerator();
-  console.log(items);
+  // console.log(items);
   let rewardList = [
     null,
     '10%',
@@ -45,24 +45,25 @@ function rewardGenerator(items) {
 // send request to generate new coupon
 async function addPost(value) {
   //   event.preventDefault();
-  if (value === "notCoupon") {
+  value = typeof value === 'string' ? value : 'notCoupon';
+  if (value === 'notCoupon') {
     var body = {
       genre: 'GEN',
-      user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
+      user: JSON.parse(sessionStorage.getItem('data'))['id'],
       expire_date: '2021-10-10',
-      value: "10%",
+      value: '10%',
       status: true,
-      is_coupon: false
+      is_coupon: false,
     };
   } else {
     var body = {
-    genre: 'GEN',
-    user: JSON.parse(sessionStorage.getItem('data'))['user_id'],
-    expire_date: '2021-10-10',
-    value: value,
-    status: true,
+      genre: 'GEN',
+      user: JSON.parse(sessionStorage.getItem('data'))['id'],
+      expire_date: '2021-10-10',
+      value: value,
+      status: true,
+    };
   }
-}
 
   const config = {
     headers: {
@@ -79,7 +80,6 @@ async function addPost(value) {
       JSON.stringify(body),
       config
     );
-    console.log('created coupon', response);
     sessionStorage.setItem('reward', JSON.stringify(response.data));
   } catch (err) {
     console.log(err);
@@ -88,7 +88,11 @@ async function addPost(value) {
 
 class Gacha extends Component {
   constructor(props) {
-    console.log(JSON.parse(sessionStorage.getItem('data')))
+    console.log(
+      'gacha constructor',
+      JSON.parse(sessionStorage.getItem('data'))
+    );
+    // console.log(JSON.parse(sessionStorage.getItem('data')).gacha_chances);
     super(props);
 
     this.state = {
@@ -96,6 +100,7 @@ class Gacha extends Component {
       couponActive: false,
       isExit: false,
       items: [],
+      gachaChances: Number(sessionStorage.getItem('gacha_chances')),
     };
     this.AnimaHandler = this.AnimaHandler.bind(this);
     this.CouponHandler = this.CouponHandler.bind(this);
@@ -124,38 +129,37 @@ class Gacha extends Component {
     // rewardList [null, ...7coupons, ...30products]
     const reward = rewardGenerator(this.state.items);
 
-    // store to session
-    sessionStorage.setItem('reward', JSON.stringify(reward));
-
-    // if index != 0 which means got reward
-
-    // if it is a coupon
-    if (typeof reward === 'string') {
-      console.log('CouponHandler reward: ', reward, typeof reward);
-      // Post to backend server
-      addPost(reward).then(() => {
-        // Wait until promise is resolved
-        this.setState((prevState) => {
-          return { couponActive: true };
-        });
-      }).catch((err) => {
-        console.log(err)
+    // sessionStorage.setItem('reward', JSON.stringify(reward));
+    addPost(reward)
+      .then(() => {
+        console.log('resolved addPost', sessionStorage.getItem('reward'));
+        if (typeof reward != 'string')
+          sessionStorage.setItem('reward', JSON.stringify(reward));
       })
-    } else {
-      addPost("notCoupon").then(() => {
-        // Wait until promise is resolved
-        this.setState((prevState) => {
-          return { couponActive: true };
-        });
-      }).catch((err) => {
-        console.log(err)
-      });
-    }
+      .catch((err) => console.log(err));
+    this.setState((prevState) => {
+      const gotResponse = sessionStorage.getItem('reward') != undefined;
+      console.log(gotResponse, sessionStorage.getItem('reward'));
+      return {
+        couponActive: typeof reward === 'string' ? gotResponse : true,
+        gachaChances: prevState.gachaChances - 1,
+      };
+    });
   }
 
   render() {
     if (this.state.isExit) return <Redirect to="/" />;
-    if (this.state.couponActive) return <Redirect to="/Award" />;
+    if (this.state.couponActive) {
+      sessionStorage.setItem('gacha_chances', this.state.gachaChances);
+      return <Redirect to="/Award" />;
+    }
+    console.log('considtion', sessionStorage.getItem('data'));
+    console.log(
+      'bug',
+      this.state.gachaChances <= 0 && sessionStorage.getItem('data') != null
+    );
+    if (this.state.gachaChances <= 0 && sessionStorage.getItem('data') != null)
+      return <Redirect to="/lack" />;
 
     return (
       <div className="GachaBack">
