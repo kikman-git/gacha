@@ -77,7 +77,7 @@ export default function Coupon() {
     }
 
     // UPDATE GACHA CHANCES
-    setGachaChances(JSON.parse(sessionStorage.getItem('data')['gacha_chances'])); //TODO:
+    //setGachaChances(JSON.parse(sessionStorage.getItem('data')['gacha_chances'])); 
   }, [couponValue]);
 
   // share the link
