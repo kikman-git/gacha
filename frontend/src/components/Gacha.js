@@ -139,10 +139,13 @@ class Gacha extends Component {
     // sessionStorage.setItem('reward', JSON.stringify(reward));
     addPost(reward)
       .then(() => {
-        console.log('resolved addPost', sessionStorage.getItem('reward'));
-        if (typeof reward != 'string')
-          sessionStorage.setItem('reward', JSON.stringify(reward));
+        if (typeof reward === 'string')
+          while (sessionStorage.getItem('reward') === null){
+            console.log('addPost waiting resposne from server', sessionStorage.getItem('reward'));
+          }
+        else  sessionStorage.setItem('reward', JSON.stringify(reward));
       })
+
       .catch((err) => console.log(err));
     this.setState((prevState) => {
       const gotResponse = sessionStorage.getItem('reward') != undefined;
