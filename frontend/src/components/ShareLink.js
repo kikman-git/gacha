@@ -73,9 +73,9 @@ export default function ShareLink(props) {
         </DialogTitle>
         <DialogContent dividers>
           <p className="sharing-message">Share with your friends!</p>
-          <p>http://localhost:3000/register/{user_uuid}</p>
+          <p>{process.env.REACT_APP_BACKEND_URI}/register/{user_uuid}</p>
           <CopyToClipboard
-            text={`http://localhost:3000/register/${user_uuid}`}
+            text={`${process.env.REACT_APP_BACKEND_URI}/register/${user_uuid}`}
             onCopy={() => setCopied(true)}
           >
             <Button variant="outlined">Copy</Button>
