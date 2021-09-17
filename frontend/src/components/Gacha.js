@@ -25,10 +25,17 @@ function rewardGenerator(items) {
     '500y',
     '1000y',
     '10000y',
-  ].concat(items); //TODO: change it back
+    'items',
+  ]; //.concat(items); //TODO: change it back
 
   // Get random index number
   let valueIndex = getRandomInt(rewardList.length);
+
+  // if get items
+  if (valueIndex === rewardList.length - 1) {
+    rewardList = items;
+    valueIndex = getRandomInt(rewardList.length);
+  }
   console.log('Got reward: ', rewardList[valueIndex]);
   console.log(
     'rewardGenerator ',
@@ -76,7 +83,7 @@ async function addPost(value) {
   console.log(body, config);
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URI}/coupons/create/`,
+      'http://127.0.0.1:8000/coupons/create/',
       JSON.stringify(body),
       config
     );
