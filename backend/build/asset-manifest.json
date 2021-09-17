@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.69447116.chunk.css",
+    "main.js": "/static/js/main.6107cb8b.chunk.js",
+    "main.js.map": "/static/js/main.6107cb8b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.300ecdad.js",
+    "runtime-main.js.map": "/static/js/runtime-main.300ecdad.js.map",
+    "static/js/2.c4528916.chunk.js": "/static/js/2.c4528916.chunk.js",
+    "static/js/2.c4528916.chunk.js.map": "/static/js/2.c4528916.chunk.js.map",
+    "static/js/3.45cd3b00.chunk.js": "/static/js/3.45cd3b00.chunk.js",
+    "static/js/3.45cd3b00.chunk.js.map": "/static/js/3.45cd3b00.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.69447116.chunk.css.map": "/static/css/main.69447116.chunk.css.map",
+    "static/js/2.c4528916.chunk.js.LICENSE.txt": "/static/js/2.c4528916.chunk.js.LICENSE.txt",
+    "static/media/Homepage.css": "/static/media/Hi.43db965f.gif",
+    "static/media/Rakuten-logo.444284a8.png": "/static/media/Rakuten-logo.444284a8.png",
+    "static/media/RakutenLogo.b8ec0c47.png": "/static/media/RakutenLogo.b8ec0c47.png",
+    "static/media/Award.css": "/static/media/congra1.3cf7527a.gif",
+    "static/media/coupon10.97abb762.png": "/static/media/coupon10.97abb762.png",
+    "static/media/coupon100.6290a32c.png": "/static/media/coupon100.6290a32c.png",
+    "static/media/coupon1000.19828ffe.png": "/static/media/coupon1000.19828ffe.png",
+    "static/media/coupon10000.bbf68564.png": "/static/media/coupon10000.bbf68564.png",
+    "static/media/coupon200.2f5f919e.png": "/static/media/coupon200.2f5f919e.png",
+    "static/media/coupon500.ee8c80d9.png": "/static/media/coupon500.ee8c80d9.png",
+    "static/media/couponNull.73be1fef.png": "/static/media/couponNull.73be1fef.png",
+    "static/media/gacha_img.ab642ffa.png": "/static/media/gacha_img.ab642ffa.png",
+    "static/media/Gacha.css": "/static/media/playit.7924e63d.gif",
+    "static/media/paella.04bca6ff.jpg": "/static/media/paella.04bca6ff.jpg",
+    "static/media/rakuten_logo.54545b3c.svg": "/static/media/rakuten_logo.54545b3c.svg",
+    "static/media/sad.57c5b3cc.gif": "/static/media/sad.57c5b3cc.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.300ecdad.js",
+    "static/js/2.c4528916.chunk.js",
+    "static/css/main.69447116.chunk.css",
+    "static/js/main.6107cb8b.chunk.js"
+  ]
+}
